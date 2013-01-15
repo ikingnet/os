@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#update the user password
+sudo passwd ubuntu<<EOF
+kingnet
+kingnet
+EOF
+
+#update the root password
+sudo passwd root<<EOF
+kingnet
+kingnet
+EOF
+
+#set China apt source
+sudo sed -i "s/archive.ubuntu.com/cn.archive.ubuntu.com/g" /etc/apt/sources.list
+
+#set hosts
+echo "123.129.214.98 cn.archive.ubuntu.com"| sudo tee -a /etc/hosts
+
+#update apt and update system
+sudo apt-get update
+sudo apt-get upgrade
+
