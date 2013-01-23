@@ -1,6 +1,13 @@
 #!/bin/bash
 
 echo "Begin init os."
+
+# change the bad gateway
+if sudo route -n | grep "10.0.0.3"; then
+  sudo route add default gw 10.0.0.5
+  sudo route del default gw 10.0.0.3
+fi
+
 #update the user password
 sudo passwd ubuntu<<EOF
 kingnet
