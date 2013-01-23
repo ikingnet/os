@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Begin init os."
 #update the user password
 sudo passwd ubuntu<<EOF
 kingnet
