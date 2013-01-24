@@ -3,30 +3,32 @@
 echo "Begin init os."
 
 # change the bad gateway
-if sudo route -n | grep "10.0.0.3"; then
-  sudo route add default gw 10.0.0.5
-  sudo route del default gw 10.0.0.3
+if route -n | grep "10.0.0.3"; then
+  route add default gw 10.0.0.5
+  route del default gw 10.0.0.3
+  sed -i 's/10.0.0.3/10.0.0.5/g' /etc/resolv.conf
+  chattr +i /etc/resolv.conf 
 fi
 
 #update the user password
-sudo passwd ubuntu<<EOF
+passwd ubuntu<<EOF
 kingnet
 kingnet
 EOF
 
 #update the root password
-sudo passwd root<<EOF
+passwd root<<EOF
 kingnet
 kingnet
 EOF
 
 #set China apt source
-sudo sed -i "s/\/archive.ubuntu.com/\/mirrors.163.com/g" /etc/apt/sources.list
+sed -i "s/\/archive.ubuntu.com/\/mirrors.163.com/g" /etc/apt/sources.list
 
 #set hosts
-echo "127.0.0.1 ${HOSTNAME} localhost.localdomain"| sudo tee -a /etc/hosts
-echo "123.129.214.98 cn.archive.ubuntu.com"| sudo tee -a /etc/hosts
-echo "123.58.173.89 mirrors.163.com" | sudo tee -a /etc/hosts
+echo "127.0.0.1 ${HOSTNAME} localhost.localdomain" >> /etc/hosts
+echo "123.129.214.98 cn.archive.ubuntu.com" >> /etc/hosts
+echo "123.58.173.89 mirrors.163.com" >> /etc/hosts
 #enable password ssh
 sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
 echo "UseDNS no" | sudo tee -a /etc/ssh/sshd_config
