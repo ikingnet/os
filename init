@@ -29,6 +29,13 @@ sed -i "s/\/archive.ubuntu.com/\/mirrors.163.com/g" /etc/apt/sources.list
 echo "127.0.0.1 ${HOSTNAME} localhost.localdomain" >> /etc/hosts
 echo "123.129.214.98 cn.archive.ubuntu.com" >> /etc/hosts
 echo "123.58.173.89 mirrors.163.com" >> /etc/hosts
+echo "207.97.227.239 github.com" >> /etc/hosts
+echo "65.74.177.129 www.github.com" >> /etc/hosts
+echo "207.97.227.252 nodeload.github.com" >> /etc/hosts
+echo "207.97.227.243 raw.github.com" >> /etc/hosts
+echo "204.232.175.78 documentcloud.github.com" >> /etc/hosts
+echo "204.232.175.78 pages.github.com" >> /etc/hosts
+
 #enable password ssh
 sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
 echo "UseDNS no" | sudo tee -a /etc/ssh/sshd_config
