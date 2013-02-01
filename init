@@ -36,6 +36,7 @@ echo "207.97.227.243 raw.github.com" >> /etc/hosts
 echo "204.232.175.78 documentcloud.github.com" >> /etc/hosts
 echo "204.232.175.78 pages.github.com" >> /etc/hosts
 echo "93.184.215.223 repo1.maven.org" >> /etc/hosts
+echo "173.243.49.35 api.cloudfoundry.com" >> /etc/hosts
 
 #enable password ssh
 sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
